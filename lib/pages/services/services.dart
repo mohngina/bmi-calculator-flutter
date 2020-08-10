@@ -99,7 +99,13 @@ class ServicesPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: appBackgroundColor,
-      appBar: CustomAppBar(title: 'Services'),
+      appBar: CustomAppBar(
+        title: 'Services',
+        leading: NeumorphicButton(
+          child: Icon(Icons.arrow_back),
+          onTap: () => Navigator.pop(context),
+        ),
+      ),
       body: SafeArea(
         child: Stack(
           children: [

@@ -7,12 +7,14 @@ class NeumorphicButton extends StatefulWidget {
   final badge;
   final pressed;
   final style;
+  final Function onTap;
 
-  NeumorphicButton({
+  const NeumorphicButton({
     this.child,
     this.badge,
+    this.onTap,
     this.pressed: false,
-    this.style: const NeumorphicStyle(),
+    this.style: const NeumorphicStyle(padding: EdgeInsets.all(9.0)),
   });
 
   @override
@@ -20,20 +22,23 @@ class NeumorphicButton extends StatefulWidget {
         child: child,
         badge: badge,
         pressed: pressed,
+        onTap: onTap,
         style: style,
       );
 }
 
 class _NeumorphicButtonState extends State<NeumorphicButton> {
+  bool pressed;
   final child;
   final badge;
-  bool pressed;
+  final Function onTap;
   final NeumorphicStyle style;
 
   _NeumorphicButtonState({
     this.child,
     this.badge,
     this.pressed,
+    this.onTap,
     this.style,
   });
 
@@ -51,10 +56,13 @@ class _NeumorphicButtonState extends State<NeumorphicButton> {
   Widget build(BuildContext context) {
     return Stack(
       children: <Widget>[
-        Neumorphic(
-          child: child,
-          pressed: pressed,
-          style: style,
+        GestureDetector(
+          onTap: onTap,
+          child: Neumorphic(
+            child: child,
+            pressed: pressed,
+            style: style,
+          ),
         ),
         // _setButtonBadge(),
         Positioned(
