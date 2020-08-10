@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:service_pap/models/services_model.dart';
+import 'package:service_pap/pages/services/services.dart';
 import 'package:service_pap/utils/variables.dart';
 import 'package:service_pap/utils/functions.dart';
 import 'package:service_pap/widgets/neumorphism.dart';
@@ -44,53 +46,66 @@ class ProfileInfo extends StatelessWidget {
   }
 }
 
-class Services extends StatelessWidget {
-  final services = [
-    {'icon': Icons.settings, 'name': 'plumber', 'number': 21},
-    {'icon': Icons.power, 'name': 'electrician', 'number': 14},
-    {'icon': Icons.brush, 'name': 'cleaner', 'number': 7},
-    {'icon': Icons.cake, 'name': 'cook', 'number': 13},
-  ];
+class ServiceCategories extends StatelessWidget {
+  final List<ServiceCategory> serviceCategories;
+  final categoriesIcons = {
+    'plumber': Icons.settings,
+    'electrician': Icons.power,
+    'cleaner': Icons.brush,
+    'cook': Icons.cake,
+  };
 
-  Widget _buildServices() {
-    List<Widget> _builtSerives = [];
-
-    for (var service in services) {
-      _builtSerives.add(
-        NeumorphicContainer(
-          child: Column(
-            children: <Widget>[
-              Icon(service['icon'], size: 60.0),
-              SizedBox(height: 30),
-              Text("${service['name']}".capitalize()),
-              SizedBox(height: 10),
-              Text(
-                "${service['number']}",
-                style: TextStyle(
-                  color: Colors.grey,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 38,
-                ),
-              ),
-            ],
-          ),
-          padding: EdgeInsets.symmetric(horizontal: 30, vertical: 20),
-        ),
-      );
-
-      _builtSerives.add(SizedBox(width: 20));
-    }
-
-    return ListView(
-      scrollDirection: Axis.horizontal,
-      padding: EdgeInsets.all(appPaddingValue),
-      children: _builtSerives,
-    );
-  }
+  ServiceCategories({
+    Key key,
+    @required this.serviceCategories,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return _buildServices();
+    // return _buildServices(context);
+    return ListView.builder(
+      scrollDirection: Axis.horizontal,
+      padding: EdgeInsets.all(appPaddingValue),
+      itemCount: serviceCategories.length,
+      itemBuilder: (BuildContext context, int index) {
+        final category = serviceCategories[index];
+
+        return GestureDetector(
+          onTap: () => Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) =>
+                    ServicesPage(services: category.services)),
+          ),
+          child: Row(
+            children: [
+              NeumorphicContainer(
+                child: Column(
+                  children: <Widget>[
+                    Icon(
+                        categoriesIcons[category.name.toString().toLowerCase()],
+                        size: 60.0),
+                    SizedBox(height: 30),
+                    Text("${category.name}".capitalize()),
+                    SizedBox(height: 10),
+                    Text(
+                      "${category.services.length}",
+                      style: TextStyle(
+                        color: Colors.grey,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 38,
+                      ),
+                    ),
+                  ],
+                ),
+                padding: EdgeInsets.symmetric(horizontal: 30, vertical: 20),
+              ),
+              const SizedBox(width: 25.0),
+            ],
+          ),
+        );
+      },
+    );
   }
 }
 

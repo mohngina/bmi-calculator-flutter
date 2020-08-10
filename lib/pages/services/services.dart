@@ -1,61 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:service_pap/models/service_provider_model.dart';
+import 'package:service_pap/models/services_model.dart';
 
 import 'package:service_pap/utils/variables.dart';
 import 'package:service_pap/widgets/neumorphism.dart';
 import 'package:service_pap/widgets/custom_app_bar.dart';
 
-class ServicesPage extends StatefulWidget {
-  @override
-  _ServicesPageState createState() => _ServicesPageState();
-}
+class ServicesPage extends StatelessWidget {
+  final List<Service> services;
 
-class _ServicesPageState extends State<ServicesPage> {
-  final services = [
-    {
-      'id': 1,
-      'image': 'https://picsum.photos/201',
-      'name': 'Super Brendah',
-      'location': 'West Side',
-      'rating': 3.7
-    },
-    {
-      'id': 2,
-      'image': 'https://picsum.photos/202',
-      'name': 'Mia',
-      'location': 'East Coast',
-      'rating': 2.1
-    },
-    {
-      'id': 3,
-      'image': 'https://picsum.photos/203',
-      'name': 'Justin',
-      'location': 'Alabama',
-      'rating': 1.9
-    },
-    {
-      'id': 4,
-      'image': 'https://picsum.photos/204',
-      'name': 'Claus',
-      'location': 'Brighton',
-      'rating': 4.0
-    },
-    {
-      'id': 5,
-      'image': 'https://picsum.photos/205',
-      'name': 'Mega Wash',
-      'location': 'Greenland',
-      'rating': 4.5
-    },
-  ];
+  ServicesPage({
+    Key key,
+    @required this.services,
+  }) : super(key: key);
 
   Widget _buildServices() {
     List<Widget> _builtServicesLeft = [];
     List<Widget> _builtServicesRight = [];
 
     for (var i = 0; i < services.length; ++i) {
-      Map service = services[i];
+      Service service = services[i];
       bool _roundEven = i % 2 == 0;
       double _widgetHeight = 120.0;
+      ServiceProvider provider = service.provider;
 
       Widget _builtService = Padding(
         padding: EdgeInsets.only(bottom: 30.0),
@@ -67,7 +35,7 @@ class _ServicesPageState extends State<ServicesPage> {
               ClipRRect(
                 borderRadius: BorderRadius.circular(5.0),
                 child: Image.network(
-                  service['image'],
+                  provider.profileImage,
                   width: 110,
                   height: _roundEven ? _widgetHeight : _widgetHeight + 50.0,
                   fit: BoxFit.cover,
@@ -75,14 +43,14 @@ class _ServicesPageState extends State<ServicesPage> {
               ),
               SizedBox(height: 10.0),
               Text(
-                service['name'],
+                provider.name,
                 style: TextStyle(fontWeight: FontWeight.bold),
               ),
               SizedBox(height: 3.0),
               Text(
-                service['location'],
+                service.location,
               ),
-              RatingStars(rating: service['rating']),
+              RatingStars(rating: service.rating),
             ],
           ),
         ),
@@ -136,8 +104,22 @@ class _ServicesPageState extends State<ServicesPage> {
             ListView(
               children: [
                 Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    SizedBox(height: 40),
+                    SizedBox(height: 20),
+                    Padding(
+                      padding:
+                          EdgeInsets.symmetric(horizontal: appPaddingValue),
+                      child: Text(
+                        '${services.length} services found',
+                        style: TextStyle(
+                          fontSize: 24.0,
+                          color: Colors.grey[500],
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: 20),
                     Padding(
                       padding:
                           EdgeInsets.symmetric(horizontal: appPaddingValue),
@@ -173,7 +155,7 @@ class _ServicesPageState extends State<ServicesPage> {
                     ),
                     SizedBox(width: 15),
                     NeumorphicButton(
-                      child: Icon(Icons.filter),
+                      child: Icon(MdiIcons.filterMenu),
                       backgroundColor: _bottomButtonBackgroundColor,
                       shadows: _bottomButtonShadows,
                       radius: _bottomButtonRadius,
