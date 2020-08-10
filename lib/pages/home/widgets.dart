@@ -113,46 +113,71 @@ class ServiceCategories extends StatelessWidget {
   }
 }
 
-class BottomNav extends StatelessWidget {
+class BottomNav extends StatefulWidget {
+  @override
+  _BottomNavState createState() => _BottomNavState();
+}
+
+class _BottomNavState extends State<BottomNav> {
+  int _activeIndex = 0;
+
+  List<Map> buttons = [
+    {
+      'icon': Icons.home,
+      'badge': null,
+    },
+    {
+      'icon': Icons.stop,
+      'badge': null,
+    },
+    {
+      'icon': Icons.notifications,
+      'badge': Container(
+        width: 20,
+        height: 20,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(25),
+          color: Colors.red,
+        ),
+        child: Center(
+          child: Text('9',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 12,
+              )),
+        ),
+      ),
+    },
+    {
+      'icon': Icons.location_on,
+      'badge': null,
+    }
+  ];
+
+  List<Widget> _buildButtons() {
+    List<Widget> _builtButtons = [];
+
+    for (var i = 0; i < buttons.length; ++i) {
+      var button = buttons[i];
+
+      _builtButtons.add(NeumorphicButton(
+        badge: button['badge'],
+        pressed: i == _activeIndex ? true : false,
+        style: NeumorphicStyle(padding: EdgeInsets.all(10.0)),
+        child: Icon(button['icon']),
+      ));
+    }
+
+    return _builtButtons;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: appPaddingValue, vertical: 30),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: <Widget>[
-          NeumorphicButton(
-            style: NeumorphicStyle(padding: EdgeInsets.all(10.0)),
-            child: Icon(Icons.home),
-          ),
-          NeumorphicButton(
-            style: NeumorphicStyle(padding: EdgeInsets.all(10.0)),
-            child: Icon(Icons.stop),
-          ),
-          NeumorphicButton(
-            style: NeumorphicStyle(padding: EdgeInsets.all(10.0)),
-            child: Icon(Icons.notifications),
-            badge: Container(
-              width: 20,
-              height: 20,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(25),
-                color: Colors.red,
-              ),
-              child: Center(
-                child: Text('9',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 12,
-                    )),
-              ),
-            ),
-          ),
-          NeumorphicButton(
-            style: NeumorphicStyle(padding: EdgeInsets.all(10.0)),
-            child: Icon(Icons.location_on),
-          ),
-        ],
+        children: _buildButtons(),
       ),
     );
   }

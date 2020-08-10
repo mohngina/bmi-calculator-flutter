@@ -3,6 +3,7 @@ import 'package:service_pap/models/services_model.dart';
 import 'package:service_pap/pages/home/widgets.dart';
 import 'package:service_pap/utils/variables.dart';
 import 'package:service_pap/widgets/custom_app_bar.dart';
+import 'package:service_pap/widgets/neumorphism/neumorphism.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -21,11 +22,18 @@ class _HomePageState extends State<HomePage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            SizedBox(height: 40),
+            SizedBox(height: 20),
             ProfileInfo(),
-            SizedBox(height: 40),
+            SizedBox(height: 10),
 
-            // TODO: Implement the search widget
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: appPaddingValue),
+              child: NeumorphicTextField(
+                hint: 'Search for services...',
+              ),
+            ),
+            SizedBox(height: 30),
+
             Padding(
               padding: EdgeInsets.symmetric(horizontal: appPaddingValue),
               child: Text(
