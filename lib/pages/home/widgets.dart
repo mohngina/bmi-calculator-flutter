@@ -122,12 +122,15 @@ class BottomNav extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
           NeumorphicButton(
+            style: NeumorphicStyle(padding: EdgeInsets.all(10.0)),
             child: Icon(Icons.home),
           ),
           NeumorphicButton(
+            style: NeumorphicStyle(padding: EdgeInsets.all(10.0)),
             child: Icon(Icons.stop),
           ),
           NeumorphicButton(
+            style: NeumorphicStyle(padding: EdgeInsets.all(10.0)),
             child: Icon(Icons.notifications),
             badge: Container(
               width: 20,
@@ -146,6 +149,7 @@ class BottomNav extends StatelessWidget {
             ),
           ),
           NeumorphicButton(
+            style: NeumorphicStyle(padding: EdgeInsets.all(10.0)),
             child: Icon(Icons.location_on),
           ),
         ],

@@ -1,66 +1,40 @@
 import 'package:flutter/material.dart';
-import 'package:service_pap/utils/variables.dart';
+
+import '../neumorphism.dart';
 
 class NeumorphicButton extends StatefulWidget {
   final child;
   final badge;
-  final radius;
   final pressed;
-  final padding;
-  final backgroundColor;
-  final List<BoxShadow> shadows;
+  final style;
 
   NeumorphicButton({
     this.child,
     this.badge,
     this.pressed: false,
-    this.radius: 5.0,
-    this.padding: const EdgeInsets.all(8),
-    this.backgroundColor: appBackgroundColor,
-    this.shadows: const [
-      BoxShadow(
-        color: Colors.white,
-        offset: Offset(-3, -3),
-        blurRadius: 5,
-        spreadRadius: 1,
-      ),
-      BoxShadow(
-        color: Colors.black38,
-        offset: Offset(3, 3),
-        blurRadius: 5,
-        spreadRadius: 1,
-      ),
-    ],
+    this.style: const NeumorphicStyle(),
   });
 
   @override
   _NeumorphicButtonState createState() => _NeumorphicButtonState(
-      child: child,
-      badge: badge,
-      radius: radius,
-      pressed: pressed,
-      padding: padding,
-      shadows: shadows,
-      backgroundColor: backgroundColor);
+        child: child,
+        badge: badge,
+        pressed: pressed,
+        style: style,
+      );
 }
 
 class _NeumorphicButtonState extends State<NeumorphicButton> {
   final child;
   final badge;
-  final radius;
-  final padding;
-  final shadows;
-  final backgroundColor;
   bool pressed;
+  final NeumorphicStyle style;
 
   _NeumorphicButtonState({
     this.child,
     this.badge,
-    this.radius,
-    this.padding,
     this.pressed,
-    this.shadows,
-    this.backgroundColor,
+    this.style,
   });
 
   Widget _buildButtonBadge() {
@@ -77,14 +51,10 @@ class _NeumorphicButtonState extends State<NeumorphicButton> {
   Widget build(BuildContext context) {
     return Stack(
       children: <Widget>[
-        Container(
-          padding: padding,
-          decoration: BoxDecoration(
-            color: backgroundColor,
-            borderRadius: BorderRadius.circular(radius),
-            boxShadow: shadows,
-          ),
+        Neumorphic(
           child: child,
+          pressed: pressed,
+          style: style,
         ),
         // _setButtonBadge(),
         Positioned(

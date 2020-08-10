@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:service_pap/pages/home/home.dart';
-import 'package:service_pap/pages/services/services.dart';
+import 'package:service_pap/pages/pages.dart';
 
 void main() {
   runApp(MyApp());

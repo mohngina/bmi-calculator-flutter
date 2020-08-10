@@ -151,16 +151,20 @@ class ServicesPage extends StatelessWidget {
                   children: <Widget>[
                     NeumorphicButton(
                       child: Icon(Icons.search),
-                      backgroundColor: _bottomButtonBackgroundColor,
-                      shadows: _bottomButtonShadows,
-                      radius: _bottomButtonRadius,
+                      style: NeumorphicStyle(
+                        color: _bottomButtonBackgroundColor,
+                        shadows: _bottomButtonShadows,
+                        radius: _bottomButtonRadius,
+                      ),
                     ),
                     SizedBox(width: 15),
                     NeumorphicButton(
                       child: Icon(MdiIcons.filterMenu),
-                      backgroundColor: _bottomButtonBackgroundColor,
-                      shadows: _bottomButtonShadows,
-                      radius: _bottomButtonRadius,
+                      style: NeumorphicStyle(
+                        color: _bottomButtonBackgroundColor,
+                        shadows: _bottomButtonShadows,
+                        radius: _bottomButtonRadius,
+                      ),
                     ),
                   ],
                 ),
