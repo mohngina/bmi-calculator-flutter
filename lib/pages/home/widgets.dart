@@ -4,7 +4,7 @@ import 'package:service_pap/models/services_model.dart';
 import 'package:service_pap/pages/services/services.dart';
 import 'package:service_pap/utils/variables.dart';
 import 'package:service_pap/utils/functions.dart';
-import 'package:service_pap/widgets/neumorphism.dart';
+import 'package:service_pap/widgets/neumorphism/neumorphism.dart';
 
 class ProfileInfo extends StatelessWidget {
   @override
@@ -17,7 +17,9 @@ class ProfileInfo extends StatelessWidget {
       child: Row(
         children: <Widget>[
           NeumorphicContainer(
-            padding: EdgeInsets.all(6.0),
+            style: NeumorphicStyle(
+              padding: EdgeInsets.all(6.0),
+            ),
             child: ClipRRect(
               borderRadius: BorderRadius.circular(6),
               child: Image.network(
@@ -80,6 +82,9 @@ class ServiceCategories extends StatelessWidget {
           child: Row(
             children: [
               NeumorphicContainer(
+                style: NeumorphicStyle(
+                  padding: EdgeInsets.symmetric(horizontal: 30, vertical: 20),
+                ),
                 child: Column(
                   children: <Widget>[
                     Icon(
@@ -98,7 +103,6 @@ class ServiceCategories extends StatelessWidget {
                     ),
                   ],
                 ),
-                padding: EdgeInsets.symmetric(horizontal: 30, vertical: 20),
               ),
               const SizedBox(width: 25.0),
             ],

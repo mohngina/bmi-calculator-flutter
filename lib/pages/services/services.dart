@@ -4,7 +4,7 @@ import 'package:service_pap/models/service_provider_model.dart';
 import 'package:service_pap/models/services_model.dart';
 
 import 'package:service_pap/utils/variables.dart';
-import 'package:service_pap/widgets/neumorphism.dart';
+import 'package:service_pap/widgets/neumorphism/neumorphism.dart';
 import 'package:service_pap/widgets/custom_app_bar.dart';
 
 class ServicesPage extends StatelessWidget {
@@ -28,7 +28,9 @@ class ServicesPage extends StatelessWidget {
       Widget _builtService = Padding(
         padding: EdgeInsets.only(bottom: 30.0),
         child: NeumorphicContainer(
-          padding: EdgeInsets.all(16.0),
+          style: NeumorphicStyle(
+            padding: EdgeInsets.all(16.0),
+          ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[

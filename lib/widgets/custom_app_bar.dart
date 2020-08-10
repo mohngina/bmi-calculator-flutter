@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:service_pap/utils/variables.dart';
 import 'package:service_pap/widgets/logo.dart';
-import 'package:service_pap/widgets/neumorphism.dart';
+import 'package:service_pap/widgets/neumorphism/neumorphism.dart';
 
 class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
   @override
