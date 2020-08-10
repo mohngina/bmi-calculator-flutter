@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-import 'package:service_pap/models/service_provider_model.dart';
-import 'package:service_pap/models/services_model.dart';
 
+import 'package:service_pap/models/models.dart';
 import 'package:service_pap/utils/variables.dart';
-import 'package:service_pap/widgets/neumorphism/neumorphism.dart';
 import 'package:service_pap/widgets/custom_app_bar.dart';
+import 'package:service_pap/screens/services/widgets.dart';
+import 'package:service_pap/widgets/neumorphism/neumorphism.dart';
 
 class ServicesPage extends StatelessWidget {
   final List<Service> services;
@@ -46,6 +46,7 @@ class ServicesPage extends StatelessWidget {
               SizedBox(height: 10.0),
               Text(
                 provider.name,
+                overflow: TextOverflow.ellipsis,
                 style: TextStyle(fontWeight: FontWeight.bold),
               ),
               SizedBox(height: 3.0),
@@ -119,7 +120,7 @@ class ServicesPage extends StatelessWidget {
                       padding:
                           EdgeInsets.symmetric(horizontal: appPaddingValue),
                       child: Text(
-                        '${services.length} services found',
+                        '${services.length} service${services.length > 1 ? 's' : ''} found',
                         style: TextStyle(
                           fontSize: 24.0,
                           color: Colors.grey[500],
@@ -179,52 +180,6 @@ class ServicesPage extends StatelessWidget {
           ],
         ),
       ),
-    );
-  }
-}
-
-class RatingStars extends StatelessWidget {
-  final rating;
-
-  RatingStars({this.rating: 5.0});
-
-  Widget _buildStars() {
-    List<Widget> _builtStars = [];
-
-    for (var i = 1; i <= 5; ++i) {
-      _builtStars.add(
-        Icon(
-          i <= rating
-              ? Icons.star
-              : ((i - 1) < rating && rating < i)
-                  ? Icons.star_half
-                  : Icons.star_border,
-          size: 16.0,
-        ),
-      );
-    }
-
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        SizedBox(height: 5),
-        Row(
-          children: _builtStars,
-        ),
-        // Text(
-        //   "$rating",
-        //   style: TextStyle(fontSize: 18.0),
-        // ),
-      ],
-    );
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: <Widget>[
-        _buildStars(),
-      ],
     );
   }
 }

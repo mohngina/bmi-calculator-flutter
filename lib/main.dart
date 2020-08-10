@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:service_pap/pages/pages.dart';
+import 'package:service_pap/screens/screens.dart';
 
 void main() {
   runApp(MyApp());

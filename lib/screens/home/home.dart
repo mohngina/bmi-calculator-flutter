@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+
 import 'package:service_pap/models/services_model.dart';
-import 'package:service_pap/pages/home/widgets.dart';
+import 'package:service_pap/screens/home/widgets.dart';
 import 'package:service_pap/utils/variables.dart';
 import 'package:service_pap/widgets/custom_app_bar.dart';
 import 'package:service_pap/widgets/neumorphism/neumorphism.dart';
@@ -18,11 +19,11 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       backgroundColor: appBackgroundColor,
       appBar: CustomAppBar(title: 'Home'),
-      body: SafeArea(
+      body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            SizedBox(height: 20),
+            SizedBox(height: 10),
             ProfileInfo(),
             SizedBox(height: 10),
 
@@ -32,7 +33,9 @@ class _HomePageState extends State<HomePage> {
                 hint: 'Search for services...',
               ),
             ),
-            SizedBox(height: 30),
+            SizedBox(height: 10),
+            Divider(height: 5.0),
+            SizedBox(height: 20),
 
             Padding(
               padding: EdgeInsets.symmetric(horizontal: appPaddingValue),

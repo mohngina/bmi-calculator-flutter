@@ -57,6 +57,12 @@ class ServiceCategory {
           4.5,
           ServiceProvider(5, 'Mega Wash', 'https://picsum.photos/204'),
         ),
+        Service(
+          6,
+          'Finland',
+          4.5,
+          ServiceProvider(5, 'Super Wash', 'https://picsum.photos/205'),
+        ),
       ]),
     ];
   }

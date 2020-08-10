@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:service_pap/models/services_model.dart';
-import 'package:service_pap/pages/services/services.dart';
-import 'package:service_pap/utils/variables.dart';
-import 'package:service_pap/utils/functions.dart';
+
+import 'package:service_pap/utils/utils.dart';
+import 'package:service_pap/models/models.dart';
+import 'package:service_pap/screens/services/services.dart';
 import 'package:service_pap/widgets/neumorphism/neumorphism.dart';
 
 class ProfileInfo extends StatelessWidget {
+  final User user = User.fetchUser();
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -23,9 +25,10 @@ class ProfileInfo extends StatelessWidget {
             child: ClipRRect(
               borderRadius: BorderRadius.circular(6),
               child: Image.network(
-                'https://picsum.photos/200',
+                user.profile.imageUrl,
                 width: 70,
                 height: 70,
+                fit: BoxFit.cover,
               ),
             ),
           ),
@@ -39,7 +42,7 @@ class ProfileInfo extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              Text('Trixy'),
+              Text(user.username.toString().capitalize()),
             ],
           ),
         ],
@@ -64,7 +67,6 @@ class ServiceCategories extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // return _buildServices(context);
     return ListView.builder(
       scrollDirection: Axis.horizontal,
       padding: EdgeInsets.all(appPaddingValue),
@@ -137,7 +139,7 @@ class _BottomNavState extends State<BottomNav> {
         height: 20,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(25),
-          color: Colors.red,
+          color: primaryColor,
         ),
         child: Center(
           child: Text('9',
@@ -159,12 +161,16 @@ class _BottomNavState extends State<BottomNav> {
 
     for (var i = 0; i < buttons.length; ++i) {
       var button = buttons[i];
+      bool _buttonIsActive = i == _activeIndex;
 
       _builtButtons.add(NeumorphicButton(
         badge: button['badge'],
-        pressed: i == _activeIndex ? true : false,
+        pressed: _buttonIsActive ? true : false,
         style: NeumorphicStyle(padding: EdgeInsets.all(10.0)),
-        child: Icon(button['icon']),
+        child: Icon(
+          button['icon'],
+          color: _buttonIsActive ? primaryColor : null,
+        ),
       ));
     }
 
