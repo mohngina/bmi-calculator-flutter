@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-
+import 'package:flutter/services.dart';
+import 'package:service_pap/widgets/custom_button.dart';
+import 'package:service_pap/widgets/custom_text_field.dart';
 import '../../utils/variables.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -14,7 +16,7 @@ class _LoginScreenState extends State<LoginScreen> {
     return Scaffold(
       backgroundColor: appBackgroundColor,
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 40),
+        padding: EdgeInsets.symmetric(horizontal: 30),
         child: ListView(
           children: [
             SizedBox(height: size.height * 0.15),
@@ -23,54 +25,30 @@ class _LoginScreenState extends State<LoginScreen> {
               height: size.height * 0.15,
             ),
             SizedBox(height: 50),
-            TextField(
-              decoration: new InputDecoration(
-                labelText: 'Email',
-                labelStyle: TextStyle(color: Colors.black, letterSpacing: 1),
-                border:
-                    OutlineInputBorder(borderRadius: BorderRadius.circular(15)),
-              ),
+            CustomTextField(
+              keyBoard: TextInputType.emailAddress,
+              label: 'Email',
+              obscure: false,
             ),
             SizedBox(height: 20),
-            TextField(
-              decoration: new InputDecoration(
-                labelText: 'Password',
-                labelStyle: TextStyle(color: Colors.black, letterSpacing: 1),
-                border: OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: Colors.green,
-                    ),
-                    borderRadius: BorderRadius.circular(15)),
-              ),
+            CustomTextField(
+              label: 'Password',
+              obscure: true,
             ),
             SizedBox(height: 40),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: size.width * 0.25),
-              child: MaterialButton(
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(6.0)),
-                  color: Colors.black,
-                  child: Text(
-                    'Home',
-                    style: TextStyle(color: Colors.white),
-                  ),
-                  onPressed: () {
-                    Navigator.pushNamed(context, 'home');
-                  }),
+            CustomButton(
+              size: size,
+              label: 'Service',
+              onPress: () {
+                Navigator.pushNamed(context, 'service');
+              },
             ),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: size.width * 0.25),
-              child: MaterialButton(
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(6.0)),
-                  color: Colors.black,
-                  child: Text(
-                    'Service',
-                    style: TextStyle(color: Colors.white),
-                  ),
-                  onPressed: () {
-                    Navigator.pushNamed(context, 'service');
-                  }),
+            CustomButton(
+              size: size,
+              label: 'Home',
+              onPress: () {
+                Navigator.pushNamed(context, 'home');
+              },
             )
           ],
         ),
