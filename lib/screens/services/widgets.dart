@@ -18,7 +18,9 @@ class RatingStars extends StatelessWidget {
                   ? Icons.star_half
                   : Icons.star_border,
           size: 14.0,
-          color: primaryColor,
+          color: rating > 4
+              ? Colors.green[600]
+              : rating > 2 ? Colors.orange[600] : Colors.red[600],
         ),
       );
     }

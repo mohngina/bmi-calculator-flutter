@@ -172,7 +172,7 @@ class ServicesPage extends StatelessWidget {
                     ),
                     SizedBox(width: 15),
                     NeumorphicButton(
-                      child: Icon(MdiIcons.filterMenu),
+                      child: Icon(MdiIcons.filter),
                       style: _bottomButtonsStyle,
                     ),
                   ],

@@ -1,4 +1,10 @@
-import 'package:service_pap/models/service_provider_model.dart';
+class ServiceProvider {
+  final id;
+  final name;
+  final profileImage;
+
+  ServiceProvider(this.id, this.name, this.profileImage);
+}
 
 class Service {
   final id;
@@ -54,7 +60,7 @@ class ServiceCategory {
         Service(
           5,
           'Greenland',
-          4.5,
+          1.5,
           ServiceProvider(5, 'Mega Wash', 'https://picsum.photos/204'),
         ),
         Service(
@@ -63,6 +69,14 @@ class ServiceCategory {
           4.5,
           ServiceProvider(
               5, 'This is a long name', 'https://picsum.photos/205'),
+        ),
+      ]),
+      ServiceCategory(1, 'Cook', [
+        Service(
+          20,
+          'East Coast',
+          3.1,
+          ServiceProvider(1, 'Sweet Mary', 'https://picsum.photos/220'),
         ),
       ]),
     ];

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 import 'package:service_pap/utils/utils.dart';
 import 'package:service_pap/models/models.dart';
@@ -54,10 +55,10 @@ class ProfileInfo extends StatelessWidget {
 class ServiceCategories extends StatelessWidget {
   final List<ServiceCategory> serviceCategories;
   final categoriesIcons = {
-    'plumber': Icons.settings,
+    'plumber': MdiIcons.waterPump,
     'electrician': Icons.power,
     'cleaner': Icons.brush,
-    'cook': Icons.cake,
+    'cook': MdiIcons.cupcake,
   };
 
   ServiceCategories({
