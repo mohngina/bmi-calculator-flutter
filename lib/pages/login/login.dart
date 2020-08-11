@@ -49,6 +49,13 @@ class _LoginScreenState extends State<LoginScreen> {
               onPress: () {
                 Navigator.pushNamed(context, 'home');
               },
+            ),
+            CustomButton(
+              size: size,
+              label: 'Profile',
+              onPress: () {
+                Navigator.pushNamed(context, 'profile');
+              },
             )
           ],
         ),
