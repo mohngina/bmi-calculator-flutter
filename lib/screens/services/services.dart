@@ -78,26 +78,29 @@ class ServicesPage extends StatelessWidget {
     );
   }
 
-  var _bottomButtonBackgroundColor = Colors.orange[400];
-  double _bottomButtonRadius = 10.0;
-
-  List<BoxShadow> _bottomButtonShadows = [
-    BoxShadow(
-      color: Colors.orange[100],
-      offset: Offset(-3, -2),
-      blurRadius: 10,
-      spreadRadius: 1,
-    ),
-    BoxShadow(
-      color: Colors.orange[900],
-      offset: Offset(3, 3),
-      blurRadius: 10,
-      spreadRadius: 1,
-    ),
-  ];
+  var _bottomButtonBackgroundColor = Colors.white;
 
   @override
   Widget build(BuildContext context) {
+    NeumorphicStyle _bottomButtonsStyle = NeumorphicStyle(
+      color: _bottomButtonBackgroundColor,
+      radius: BorderRadius.circular(10.0),
+      shadows: [
+        BoxShadow(
+          color: Colors.white,
+          offset: Offset(-3, -2),
+          blurRadius: 5,
+          spreadRadius: 1,
+        ),
+        BoxShadow(
+          color: Colors.black.withOpacity(0.15),
+          offset: Offset(3, 3),
+          blurRadius: 10,
+          spreadRadius: 5,
+        ),
+      ],
+    );
+
     return Scaffold(
       backgroundColor: appBackgroundColor,
       appBar: CustomAppBar(
@@ -148,30 +151,22 @@ class ServicesPage extends StatelessWidget {
                     borderRadius: BorderRadius.circular(12.0),
                     boxShadow: [
                       BoxShadow(
-                        color: Colors.orangeAccent[700].withOpacity(.26),
+                        color: Colors.black.withOpacity(0.1),
                         offset: Offset(0, 0),
-                        blurRadius: 8,
-                        spreadRadius: 2,
+                        blurRadius: 15,
+                        spreadRadius: 5,
                       ),
                     ]),
                 child: Row(
                   children: <Widget>[
                     NeumorphicButton(
                       child: Icon(Icons.search),
-                      style: NeumorphicStyle(
-                        color: _bottomButtonBackgroundColor,
-                        shadows: _bottomButtonShadows,
-                        radius: _bottomButtonRadius,
-                      ),
+                      style: _bottomButtonsStyle,
                     ),
                     SizedBox(width: 15),
                     NeumorphicButton(
                       child: Icon(MdiIcons.filterMenu),
-                      style: NeumorphicStyle(
-                        color: _bottomButtonBackgroundColor,
-                        shadows: _bottomButtonShadows,
-                        radius: _bottomButtonRadius,
-                      ),
+                      style: _bottomButtonsStyle,
                     ),
                   ],
                 ),

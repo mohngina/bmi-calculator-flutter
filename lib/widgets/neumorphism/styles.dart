@@ -9,7 +9,7 @@ class NeumorphicStyle {
 
   const NeumorphicStyle({
     this.padding: const EdgeInsets.all(5.0),
-    this.radius: 5.0,
+    this.radius: const BorderRadius.all(const Radius.circular(5.0)),
     this.color: appBackgroundColor,
     this.shadows: const [
       BoxShadow(

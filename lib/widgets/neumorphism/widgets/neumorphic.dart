@@ -36,7 +36,7 @@ class _NeumorphicState extends State<Neumorphic> {
       padding: style.padding,
       decoration: BoxDecoration(
         color: style.color,
-        borderRadius: BorderRadius.circular(5),
+        borderRadius: style.radius,
         boxShadow: style.shadows,
         gradient: pressed
             ? LinearGradient(

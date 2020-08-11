@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+
+import 'package:service_pap/models/models.dart';
 import 'package:service_pap/screens/screens.dart';
 
 void main() {
@@ -6,6 +8,8 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
+  List<Service> services = ServiceCategory.fetchAll()[0].services;
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -15,7 +19,9 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: HomePage(),
+      home: ServicesPage(
+        services: services,
+      ),
     );
   }
 }
