@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
+import 'package:service_pap/utils/utils.dart';
 import 'package:service_pap/models/models.dart';
-import 'package:service_pap/utils/variables.dart';
 import 'package:service_pap/widgets/custom_app_bar.dart';
 import 'package:service_pap/screens/services/widgets.dart';
 import 'package:service_pap/widgets/neumorphism/neumorphism.dart';
@@ -45,14 +45,21 @@ class ServicesPage extends StatelessWidget {
               ),
               SizedBox(height: 10.0),
               Text(
-                provider.name,
+                provider.name.toString().ellipsize(maxChars: 12),
                 overflow: TextOverflow.ellipsis,
-                style: TextStyle(fontWeight: FontWeight.bold),
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 16.0,
+                ),
               ),
-              SizedBox(height: 3.0),
+              const SizedBox(height: 3.0),
               Text(
                 service.location,
+                style: TextStyle(
+                  color: Colors.grey[600],
+                ),
               ),
+              const SizedBox(height: 5),
               RatingStars(rating: service.rating),
             ],
           ),

@@ -2,13 +2,14 @@ import 'package:flutter/material.dart';
 
 import 'package:service_pap/models/models.dart';
 import 'package:service_pap/screens/screens.dart';
+import 'package:service_pap/utils/variables.dart';
 
 void main() {
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  List<Service> services = ServiceCategory.fetchAll()[0].services;
+  final List<Service> services = ServiceCategory.fetchAll()[0].services;
 
   @override
   Widget build(BuildContext context) {
@@ -16,12 +17,13 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primaryColor: primaryColor,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: ServicesPage(
-        services: services,
-      ),
+      // home: ServicesPage(
+      //   services: services,
+      // ),
+      home: HomePage(),
     );
   }
 }

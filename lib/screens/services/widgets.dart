@@ -17,33 +17,30 @@ class RatingStars extends StatelessWidget {
               : ((i - 1) < rating && rating < i)
                   ? Icons.star_half
                   : Icons.star_border,
-          size: 16.0,
+          size: 14.0,
           color: primaryColor,
         ),
       );
     }
 
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      mainAxisSize: MainAxisSize.min,
       children: <Widget>[
-        SizedBox(height: 5),
         Row(
           children: _builtStars,
         ),
-        // Text(
-        //   "$rating",
-        //   style: TextStyle(fontSize: 18.0),
-        // ),
+        const SizedBox(width: 18.0),
+        Text(
+          "$rating",
+          style: TextStyle(fontSize: 12.0),
+        ),
       ],
     );
   }
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: <Widget>[
-        _buildStars(),
-      ],
-    );
+    return _buildStars();
   }
 }

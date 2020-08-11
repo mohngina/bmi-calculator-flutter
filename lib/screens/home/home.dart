@@ -20,40 +20,43 @@ class _HomePageState extends State<HomePage> {
       backgroundColor: appBackgroundColor,
       appBar: CustomAppBar(title: 'Home'),
       body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            SizedBox(height: 10),
-            ProfileInfo(),
-            SizedBox(height: 10),
+        child: GestureDetector(
+          onTap: () => FocusScope.of(context).unfocus(),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              SizedBox(height: 10),
+              ProfileInfo(),
+              SizedBox(height: 10),
 
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: appPaddingValue),
-              child: NeumorphicTextField(
-                hint: 'Search for services...',
-              ),
-            ),
-            SizedBox(height: 10),
-            Divider(height: 5.0),
-            SizedBox(height: 20),
-
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: appPaddingValue),
-              child: Text(
-                'Service Categories',
-                style: TextStyle(
-                  fontSize: 24.0,
-                  color: Colors.grey[500],
-                  fontWeight: FontWeight.bold,
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: appPaddingValue),
+                child: NeumorphicTextField(
+                  hint: 'Search for services...',
                 ),
               ),
-            ),
-            Container(
-              height: 280.0,
-              child: ServiceCategories(serviceCategories: _serviceCategories),
-            ),
-            // BottomNav(),
-          ],
+              SizedBox(height: 10),
+              Divider(height: 5.0),
+              SizedBox(height: 20),
+
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: appPaddingValue),
+                child: Text(
+                  'Service Categories',
+                  style: TextStyle(
+                    fontSize: 24.0,
+                    color: Colors.grey[500],
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+              Container(
+                height: 280.0,
+                child: ServiceCategories(serviceCategories: _serviceCategories),
+              ),
+              // BottomNav(),
+            ],
+          ),
         ),
       ),
       bottomNavigationBar: BottomNav(),
