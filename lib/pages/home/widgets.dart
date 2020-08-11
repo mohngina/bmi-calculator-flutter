@@ -83,6 +83,7 @@ class Services extends StatelessWidget {
 
     return ListView(
       scrollDirection: Axis.horizontal,
+      physics: BouncingScrollPhysics(),
       padding: EdgeInsets.all(appPaddingValue),
       children: _builtSerives,
     );
@@ -118,11 +119,13 @@ class BottomNav extends StatelessWidget {
                 color: Colors.red,
               ),
               child: Center(
-                child: Text('9',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 12,
-                    )),
+                child: Text(
+                  '9',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 12,
+                  ),
+                ),
               ),
             ),
           ),

@@ -2,12 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:service_pap/utils/variables.dart';
 
 class NeumorphicButton extends StatefulWidget {
-  final child;
-  final badge;
-  final radius;
-  final pressed;
-  final padding;
-  final backgroundColor;
+  final child, badge, radius, pressed, padding, backgroundColor;
   final List<BoxShadow> shadows;
 
   NeumorphicButton({

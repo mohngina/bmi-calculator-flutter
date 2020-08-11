@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:service_pap/pages/home/home.dart';
 import 'package:service_pap/pages/services/services.dart';
+import 'package:service_pap/pages/login/login.dart';
+import 'pages/services/services.dart';
 
 void main() {
   runApp(MyApp());
@@ -13,10 +15,15 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.grey,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: ServicesPage(),
+      initialRoute: 'login',
+      routes: {
+        'login': (context) => LoginScreen(),
+        'home': (context) => HomePage(),
+        'service': (context) => ServicesPage(),
+      },
     );
   }
 }

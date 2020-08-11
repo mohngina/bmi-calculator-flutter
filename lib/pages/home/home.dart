@@ -20,7 +20,6 @@ class _HomePageState extends State<HomePage> {
             SizedBox(height: 40),
             ProfileInfo(),
             SizedBox(height: 40),
-
             // TODO: Implement the search widget
             Expanded(child: Services()),
             // BottomNav(),
