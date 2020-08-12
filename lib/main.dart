@@ -17,13 +17,16 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primaryColor: primaryColor,
+        primarySwatch: primaryColor,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      // home: ServicesPage(
-      //   services: services,
-      // ),
-      home: HomePage(),
+      initialRoute: 'login',
+      routes: {
+        'login': (context) => LoginScreen(),
+        'home': (context) => HomePage(),
+        'service': (context) => ServicesPage(),
+        'profile': (context) => ProfileScreen(),
+      },
     );
   }
 }
