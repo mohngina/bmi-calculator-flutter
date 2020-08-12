@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import 'package:service_pap/widgets/neumorphism/neumorphism.dart';
 import '../utils/variables.dart';
-import 'neumorphism.dart';
 
 class CustomProfileInfo extends StatelessWidget {
   @override
