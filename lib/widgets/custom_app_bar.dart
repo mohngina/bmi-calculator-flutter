@@ -28,6 +28,7 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
+
             NeumorphicButton(child: Icon(Icons.menu)),
 
             // logo

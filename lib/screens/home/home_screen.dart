@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:service_pap/pages/home/widgets.dart';
+import 'package:service_pap/screens/home/widgets.dart';
 import 'package:service_pap/utils/variables.dart';
 import 'package:service_pap/widgets/custom_app_bar.dart';
 

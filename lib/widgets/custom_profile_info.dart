@@ -5,6 +5,9 @@ import '../utils/variables.dart';
 import 'neumorphism.dart';
 
 class CustomProfileInfo extends StatelessWidget {
+
+
+
   @override
   Widget build(BuildContext context) {
     return Container(
