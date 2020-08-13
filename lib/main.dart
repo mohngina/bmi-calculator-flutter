@@ -17,14 +17,14 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: primaryColor,
+        primaryColor: primaryColor,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       initialRoute: 'login',
       routes: {
         'login': (context) => LoginScreen(),
         'home': (context) => HomePage(),
-        'service': (context) => ServicesPage(),
+        // 'service': (context) => ServicesPage(),
         'profile': (context) => ProfileScreen(),
       },
     );
