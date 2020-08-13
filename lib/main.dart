@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:service_pap/pages/home/home.dart';
-import 'package:service_pap/pages/profile/profile.dart';
-import 'package:service_pap/pages/services/services.dart';
-import 'package:service_pap/pages/login/login.dart';
-import 'pages/services/services.dart';
+import 'package:service_pap/screens/home/home_screen.dart';
+import 'package:service_pap/screens/services/selected_profile_screen.dart';
+import 'package:service_pap/screens/services/services_screen.dart';
+import 'package:service_pap/screens/login/login_screen.dart';
+import 'screens/services/services_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
         'login': (context) => LoginScreen(),
         'home': (context) => HomePage(),
         'service': (context) => ServicesPage(),
-        'profile': (context) => ProfileScreen(),
+        'selected_profile': (context) => SelectedProfile(),
       },
     );
   }
