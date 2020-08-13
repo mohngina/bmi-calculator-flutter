@@ -1,13 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:service_pap/widgets/custom_button.dart';
 import 'package:flutter/widgets.dart';
-import 'package:service_pap/widgets/custom_button.dart';
-import 'package:service_pap/screens/screens.dart';
-import 'package:flutter/material.dart';
-import 'package:service_pap/widgets/custom_button.dart';
-import 'package:flutter/widgets.dart';
-import 'package:service_pap/widgets/custom_button.dart';
-import 'package:service_pap/screens/screens.dart';
 import 'package:service_pap/utils/variables.dart';
 import 'package:service_pap/widgets/neumorphism/neumorphism.dart';
 import 'package:service_pap/screens/services/widgets.dart';

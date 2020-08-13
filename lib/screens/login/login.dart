@@ -52,9 +52,9 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
             CustomButton(
               size: size,
-              label: 'Selected Profile',
+              label: 'Profile',
               onPress: () {
-                Navigator.pushNamed(context, 'selected_profile');
+                Navigator.pushNamed(context, 'profile');
               },
             ),
             CustomButton(
