@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 import 'package:service_pap/utils/utils.dart';
 import 'package:service_pap/models/models.dart';
@@ -9,7 +8,6 @@ import 'package:service_pap/widgets/neumorphism/neumorphism.dart';
 
 class ServicesPage extends StatelessWidget {
   final List<Service> services;
-  final _bottomButtonBackgroundColor = Colors.white;
 
   ServicesPage({
     Key key,
@@ -88,25 +86,6 @@ class ServicesPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    NeumorphicStyle _bottomButtonsStyle = NeumorphicStyle(
-      color: _bottomButtonBackgroundColor,
-      radius: BorderRadius.circular(10.0),
-      shadows: [
-        BoxShadow(
-          color: Colors.white,
-          offset: Offset(-3, -2),
-          blurRadius: 5,
-          spreadRadius: 1,
-        ),
-        BoxShadow(
-          color: Colors.black.withOpacity(0.15),
-          offset: Offset(3, 3),
-          blurRadius: 10,
-          spreadRadius: 5,
-        ),
-      ],
-    );
-
     return Scaffold(
       backgroundColor: appBackgroundColor,
       appBar: CustomAppBar(
@@ -150,33 +129,7 @@ class ServicesPage extends StatelessWidget {
             Positioned(
               right: appPaddingValue,
               bottom: appPaddingValue,
-              child: Container(
-                padding: EdgeInsets.all(12.0),
-                decoration: BoxDecoration(
-                    color: _bottomButtonBackgroundColor,
-                    borderRadius: BorderRadius.circular(12.0),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.1),
-                        offset: Offset(0, 0),
-                        blurRadius: 15,
-                        spreadRadius: 5,
-                      ),
-                    ]),
-                child: Row(
-                  children: <Widget>[
-                    NeumorphicButton(
-                      child: Icon(Icons.search),
-                      style: _bottomButtonsStyle,
-                    ),
-                    SizedBox(width: 15),
-                    NeumorphicButton(
-                      child: Icon(MdiIcons.filter),
-                      style: _bottomButtonsStyle,
-                    ),
-                  ],
-                ),
-              ),
+              child: BottomBar(),
             ),
           ],
         ),

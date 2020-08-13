@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:service_pap/utils/variables.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:service_pap/widgets/neumorphism/neumorphism.dart';
 
 class RatingStars extends StatelessWidget {
   final rating;
@@ -44,5 +45,64 @@ class RatingStars extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return _buildStars();
+  }
+}
+
+class BottomBar extends StatefulWidget {
+  @override
+  _BottomBarState createState() => _BottomBarState();
+}
+
+class _BottomBarState extends State<BottomBar> {
+  final _bottomButtonBackgroundColor = Colors.white;
+
+  @override
+  Widget build(BuildContext context) {
+    NeumorphicStyle _bottomButtonsStyle = NeumorphicStyle(
+      color: _bottomButtonBackgroundColor,
+      radius: BorderRadius.circular(10.0),
+      shadows: [
+        BoxShadow(
+          color: Colors.white,
+          offset: Offset(-3, -2),
+          blurRadius: 5,
+          spreadRadius: 1,
+        ),
+        BoxShadow(
+          color: Colors.black.withOpacity(0.15),
+          offset: Offset(3, 3),
+          blurRadius: 10,
+          spreadRadius: 5,
+        ),
+      ],
+    );
+
+    return Container(
+      padding: EdgeInsets.all(12.0),
+      decoration: BoxDecoration(
+          color: _bottomButtonBackgroundColor,
+          borderRadius: BorderRadius.circular(12.0),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.1),
+              offset: Offset(0, 0),
+              blurRadius: 15,
+              spreadRadius: 5,
+            ),
+          ]),
+      child: Row(
+        children: <Widget>[
+          NeumorphicButton(
+            child: Icon(Icons.search),
+            style: _bottomButtonsStyle,
+          ),
+          SizedBox(width: 15),
+          NeumorphicButton(
+            child: Icon(MdiIcons.filter),
+            style: _bottomButtonsStyle,
+          ),
+        ],
+      ),
+    );
   }
 }
