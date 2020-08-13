@@ -9,6 +9,7 @@ import 'package:service_pap/widgets/neumorphism/neumorphism.dart';
 
 class ServicesPage extends StatelessWidget {
   final List<Service> services;
+  final _bottomButtonBackgroundColor = Colors.white;
 
   ServicesPage({
     Key key,
@@ -84,8 +85,6 @@ class ServicesPage extends StatelessWidget {
       ],
     );
   }
-
-  var _bottomButtonBackgroundColor = Colors.white;
 
   @override
   Widget build(BuildContext context) {
