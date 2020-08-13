@@ -1,15 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:service_pap/utils/variables.dart';
 import 'package:service_pap/widgets/logo.dart';
-import 'package:service_pap/widgets/neumorphism.dart';
+import 'package:service_pap/widgets/neumorphism/neumorphism.dart';
 
 class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
   @override
   final Size preferredSize;
   final String title;
+  final Widget leading;
 
-  CustomAppBar({this.title: 'Pap', Key key})
-      : preferredSize = Size.fromHeight(60.0),
+  CustomAppBar(
+      {this.title: 'Pap',
+      this.leading: const NeumorphicButton(
+        child: Icon(Icons.menu),
+      ),
+      Key key})
+      : preferredSize = Size.fromHeight(62.0),
         super(key: key);
 
   @override
@@ -28,8 +34,7 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
-
-            NeumorphicButton(child: Icon(Icons.menu)),
+            leading,
 
             // logo
             Logo(title),

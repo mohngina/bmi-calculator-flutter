@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:service_pap/utils/variables.dart';
-import 'package:service_pap/utils/functions.dart';
-import 'package:service_pap/widgets/neumorphism.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+
+import 'package:service_pap/utils/utils.dart';
+import 'package:service_pap/models/models.dart';
+import 'package:service_pap/screens/services/services.dart';
+import 'package:service_pap/widgets/neumorphism/neumorphism.dart';
 
 class ProfileInfo extends StatelessWidget {
+  final User user = User.fetchUser();
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -15,13 +20,16 @@ class ProfileInfo extends StatelessWidget {
       child: Row(
         children: <Widget>[
           NeumorphicContainer(
-            padding: EdgeInsets.all(6.0),
+            style: NeumorphicStyle(
+              padding: EdgeInsets.all(6.0),
+            ),
             child: ClipRRect(
               borderRadius: BorderRadius.circular(6),
               child: Image.network(
-                'https://picsum.photos/200',
+                user.profile.imageUrl,
                 width: 70,
                 height: 70,
+                fit: BoxFit.cover,
               ),
             ),
           ),
@@ -35,7 +43,7 @@ class ProfileInfo extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              Text('Trixy'),
+              Text(user.username.toString().capitalize()),
             ],
           ),
         ],
@@ -44,95 +52,139 @@ class ProfileInfo extends StatelessWidget {
   }
 }
 
-class Services extends StatelessWidget {
-  final services = [
-    {'icon': Icons.settings, 'name': 'plumber', 'number': 21},
-    {'icon': Icons.power, 'name': 'electrician', 'number': 14},
-    {'icon': Icons.brush, 'name': 'cleaner', 'number': 7},
-    {'icon': Icons.cake, 'name': 'cook', 'number': 13},
-  ];
+class ServiceCategories extends StatelessWidget {
+  final List<ServiceCategory> serviceCategories;
+  final categoriesIcons = {
+    'plumber': MdiIcons.waterPump,
+    'electrician': Icons.power,
+    'cleaner': Icons.brush,
+    'cook': MdiIcons.cupcake,
+  };
 
-  Widget _buildServices() {
-    List<Widget> _builtSerives = [];
-
-    for (var service in services) {
-      _builtSerives.add(
-        NeumorphicContainer(
-          child: Column(
-            children: <Widget>[
-              Icon(service['icon'], size: 60.0),
-              SizedBox(height: 30),
-              Text("${service['name']}".capitalize()),
-              SizedBox(height: 10),
-              Text(
-                "${service['number']}",
-                style: TextStyle(
-                  color: Colors.grey,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 38,
-                ),
-              ),
-            ],
-          ),
-          padding: EdgeInsets.symmetric(horizontal: 30, vertical: 20),
-        ),
-      );
-
-      _builtSerives.add(SizedBox(width: 20));
-    }
-
-    return ListView(
-      scrollDirection: Axis.horizontal,
-      physics: BouncingScrollPhysics(),
-      padding: EdgeInsets.all(appPaddingValue),
-      children: _builtSerives,
-    );
-  }
+  ServiceCategories({
+    Key key,
+    @required this.serviceCategories,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return _buildServices();
+    return ListView.builder(
+      scrollDirection: Axis.horizontal,
+      padding: EdgeInsets.all(appPaddingValue),
+      itemCount: serviceCategories.length,
+      itemBuilder: (BuildContext context, int index) {
+        final category = serviceCategories[index];
+
+        return GestureDetector(
+          onTap: () => Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) =>
+                    ServicesPage(services: category.services)),
+          ),
+          child: Row(
+            children: [
+              NeumorphicContainer(
+                style: NeumorphicStyle(
+                  padding: EdgeInsets.symmetric(horizontal: 30, vertical: 20),
+                ),
+                child: Column(
+                  children: <Widget>[
+                    Icon(
+                        categoriesIcons[category.name.toString().toLowerCase()],
+                        size: 60.0),
+                    SizedBox(height: 30),
+                    Text("${category.name}".capitalize()),
+                    SizedBox(height: 10),
+                    Text(
+                      "${category.services.length}",
+                      style: TextStyle(
+                        color: Colors.grey,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 38,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(width: 25.0),
+            ],
+          ),
+        );
+      },
+    );
   }
 }
 
-class BottomNav extends StatelessWidget {
+class BottomNav extends StatefulWidget {
+  @override
+  _BottomNavState createState() => _BottomNavState();
+}
+
+class _BottomNavState extends State<BottomNav> {
+  int _activeIndex = 0;
+
+  List<Map> buttons = [
+    {
+      'icon': Icons.home,
+      'badge': null,
+    },
+    {
+      'icon': Icons.stop,
+      'badge': null,
+    },
+    {
+      'icon': Icons.notifications,
+      'badge': Container(
+        width: 20,
+        height: 20,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(25),
+          color: primaryColor,
+        ),
+        child: Center(
+          child: Text('9',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 12,
+              )),
+        ),
+      ),
+    },
+    {
+      'icon': Icons.location_on,
+      'badge': null,
+    }
+  ];
+
+  List<Widget> _buildButtons() {
+    List<Widget> _builtButtons = [];
+
+    for (var i = 0; i < buttons.length; ++i) {
+      var button = buttons[i];
+      bool _buttonIsActive = i == _activeIndex;
+
+      _builtButtons.add(NeumorphicButton(
+        badge: button['badge'],
+        pressed: _buttonIsActive ? true : false,
+        style: NeumorphicStyle(padding: EdgeInsets.all(10.0)),
+        child: Icon(
+          button['icon'],
+          color: _buttonIsActive ? primaryColor : null,
+        ),
+      ));
+    }
+
+    return _builtButtons;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: appPaddingValue, vertical: 30),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: <Widget>[
-          NeumorphicButton(
-            child: Icon(Icons.home),
-          ),
-          NeumorphicButton(
-            child: Icon(Icons.stop),
-          ),
-          NeumorphicButton(
-            child: Icon(Icons.notifications),
-            badge: Container(
-              width: 20,
-              height: 20,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(25),
-                color: Colors.red,
-              ),
-              child: Center(
-                child: Text(
-                  '9',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 12,
-                  ),
-                ),
-              ),
-            ),
-          ),
-          NeumorphicButton(
-            child: Icon(Icons.location_on),
-          ),
-        ],
+        children: _buildButtons(),
       ),
     );
   }

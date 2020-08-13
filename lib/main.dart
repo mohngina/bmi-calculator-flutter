@@ -1,30 +1,32 @@
 import 'package:flutter/material.dart';
-import 'package:service_pap/screens/home/home_screen.dart';
-import 'package:service_pap/screens/services/selected_profile_screen.dart';
-import 'package:service_pap/screens/services/services_screen.dart';
-import 'package:service_pap/screens/login/login_screen.dart';
-import 'screens/services/services_screen.dart';
+
+import 'package:service_pap/models/models.dart';
+import 'package:service_pap/screens/screens.dart';
+import 'package:service_pap/utils/variables.dart';
 
 void main() {
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  final List<Service> services = ServiceCategory.fetchAll()[0].services;
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.grey,
+        primaryColor: primaryColor,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       initialRoute: 'login',
       routes: {
-        'login': (context) => LoginScreen(),
         'home': (context) => HomePage(),
-        'service': (context) => ServicesPage(),
+        'login': (context) => LoginScreen(),
+        'profile': (context) => ProfileScreen(),
         'selected_profile': (context) => SelectedProfile(),
+        // 'service': (context) => ServicesPage(),
       },
     );
   }

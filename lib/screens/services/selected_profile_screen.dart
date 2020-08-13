@@ -3,17 +3,16 @@ import 'package:service_pap/widgets/custom_button.dart';
 import '../../utils/variables.dart';
 import '../../widgets/custom_app_bar.dart';
 import '../../widgets/logo.dart';
-import '../../widgets/neumorphism.dart';
 import '../home/widgets.dart';
 import 'package:flutter/widgets.dart';
 import 'package:service_pap/widgets/custom_button.dart';
-import 'package:service_pap/screens/services/services_screen.dart';
+import 'package:service_pap/screens/screens.dart';
 import 'package:service_pap/utils/variables.dart';
-import 'package:service_pap/widgets/neumorphism.dart';
+import 'package:service_pap/widgets/neumorphism/neumorphism.dart';
 import 'package:service_pap/widgets/reusable_card.dart';
 import 'package:service_pap/widgets/selected_custom_app_bar.dart';
 
-import 'services_screen.dart';
+// import 'services_screen.dart';
 
 class SelectedProfile extends StatefulWidget {
   @override
@@ -44,14 +43,20 @@ class _SelectedProfileState extends State<SelectedProfile> {
             SizedBox(height: 10),
             Padding(
               padding: EdgeInsets.only(left: 20.0),
-              child: Text('Mourinho', style: TextStyle(fontSize: 30, color: Colors.grey[700], fontWeight: FontWeight.bold),),
+              child: Text(
+                'Mourinho',
+                style: TextStyle(
+                    fontSize: 30,
+                    color: Colors.grey[700],
+                    fontWeight: FontWeight.bold),
+              ),
             ),
             Container(
-            padding: EdgeInsets.symmetric(
-              horizontal: appPaddingValue,
-              vertical: 10,
-            ),
-                child: Row(
+              padding: EdgeInsets.symmetric(
+                horizontal: appPaddingValue,
+                vertical: 10,
+              ),
+              child: Row(
                 children: <Widget>[
                   Container(
                     height: 120,
@@ -73,12 +78,22 @@ class _SelectedProfileState extends State<SelectedProfile> {
                     children: <Widget>[
                       Row(
                         children: <Widget>[
-                          NeumorphicButton(child: Icon(Icons.flag, size: 30.0,)),
+                          NeumorphicButton(
+                              child: Icon(
+                            Icons.flag,
+                            size: 30.0,
+                          )),
                           SizedBox(width: 30.0),
-                          NeumorphicButton(child: Icon(Icons.share, size: 30.0,)),
+                          NeumorphicButton(
+                              child: Icon(
+                            Icons.share,
+                            size: 30.0,
+                          )),
                         ],
                       ),
-                      SizedBox(height: 10.0,),
+                      SizedBox(
+                        height: 10.0,
+                      ),
                       CustomButton(
                         size: Size(20.0, 40.0),
                         label: 'Make a Request',
@@ -110,36 +125,32 @@ class _SelectedProfileState extends State<SelectedProfile> {
                           children: <Widget>[
                             SizedBox(width: 20),
                             ReusableCard(
-                              image: 'https://picsum.photos/201',
+                                image: 'https://picsum.photos/201',
                                 name: 'Buda Boss',
                                 comment: 'Very punctual',
                                 date: 'August 14th, 2020',
-                                mediaQuery: mediaQuery
-                            ),
+                                mediaQuery: mediaQuery),
                             SizedBox(width: 20),
                             ReusableCard(
                                 image: 'https://picsum.photos/202',
                                 name: 'Kevin Hart',
                                 comment: 'Good Personality',
                                 date: 'August 15th, 2020',
-                                mediaQuery: mediaQuery
-                            ),
+                                mediaQuery: mediaQuery),
                             SizedBox(width: 20),
                             ReusableCard(
                                 image: 'https://picsum.photos/203',
                                 name: 'Joker',
                                 comment: 'Heavy Duty',
                                 date: 'August 16th, 2020',
-                                mediaQuery: mediaQuery
-                            ),
+                                mediaQuery: mediaQuery),
                             SizedBox(width: 20),
                             ReusableCard(
                                 image: 'https://picsum.photos/204',
                                 name: 'Big Man Bazu',
                                 comment: 'Mtu Ngori',
                                 date: 'August 20th, 2020',
-                                mediaQuery: mediaQuery
-                            ),
+                                mediaQuery: mediaQuery),
                             SizedBox(width: 20),
                           ],
                         ),
@@ -155,10 +166,3 @@ class _SelectedProfileState extends State<SelectedProfile> {
     );
   }
 }
-
-
-
-
-
-
-
