@@ -22,10 +22,11 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: 'login',
       routes: {
-        'login': (context) => LoginScreen(),
         'home': (context) => HomePage(),
-        // 'service': (context) => ServicesPage(),
+        'login': (context) => LoginScreen(),
         'profile': (context) => ProfileScreen(),
+        'selected_profile': (context) => SelectedProfile(),
+        // 'service': (context) => ServicesPage(),
       },
     );
   }
