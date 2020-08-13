@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:service_pap/utils/variables.dart';
-import 'package:service_pap/widgets/neumorphism/widgets/neumorphic_button.dart';
-
+import 'package:service_pap/widgets/neumorphism/neumorphism.dart';
 
 class SelectedCustomAppBar extends StatelessWidget with PreferredSizeWidget {
-
   @override
   final Size preferredSize;
   final String title;
@@ -32,8 +30,10 @@ class SelectedCustomAppBar extends StatelessWidget with PreferredSizeWidget {
           children: <Widget>[
             NeumorphicButton(child: Icon(Icons.arrow_back_ios)),
 
-
-            Image.asset('assets/logo.png', height: size.height * 0.07,),
+            Image.asset(
+              'assets/logo.png',
+              height: size.height * 0.07,
+            ),
 
             // cart
             NeumorphicButton(child: Icon(Icons.shopping_cart)),

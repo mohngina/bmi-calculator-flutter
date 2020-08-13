@@ -29,6 +29,7 @@ dependencies:
   cupertino_icons: ^0.1.3
   material_design_icons_flutter: ^4.0.5345
   google_maps_flutter: ^0.5.29
+  material_design_icons_flutter: ^4.0.5345
 
 dev_dependencies:
   flutter_test:
