@@ -38,9 +38,9 @@ class _LoginScreenState extends State<LoginScreen> {
             SizedBox(height: 40),
             CustomButton(
               size: size,
-              label: 'Service',
+              label: 'Sign Up',
               onPress: () {
-                Navigator.pushNamed(context, 'service');
+                Navigator.pushNamed(context, 'signup');
               },
             ),
             CustomButton(
