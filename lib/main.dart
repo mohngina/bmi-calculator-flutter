@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:service_pap/models/models.dart';
+import 'package:service_pap/screens/profile/selected_profile_screen.dart';
 import 'package:service_pap/screens/screens.dart';
+import 'package:service_pap/screens/signup/signup.dart';
 import 'package:service_pap/utils/variables.dart';
 
 void main() {
@@ -21,6 +23,7 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: 'login',
       routes: {
+        'signup': (context) => SignUpScreen(),
         'login': (context) => LoginScreen(),
         'home': (context) => HomePage(),
         // 'service': (context) => ServicesPage(),
