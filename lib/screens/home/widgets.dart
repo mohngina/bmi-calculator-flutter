@@ -79,8 +79,10 @@ class ServiceCategories extends StatelessWidget {
           onTap: () => Navigator.push(
             context,
             MaterialPageRoute(
-                builder: (context) =>
-                    ServicesPage(services: category.services)),
+                builder: (context) => ServicesPage(
+                      services: category.services,
+                      itemsName: category.name,
+                    )),
           ),
           child: Row(
             children: [

@@ -1,3 +1,7 @@
+import 'package:flutter/cupertino.dart';
+
+import 'package:service_pap/utils/variables.dart';
+
 extension StringExtension on String {
   String capitalize() {
     return '${this[0].toUpperCase()}${this.substring(1).toLowerCase()}';
@@ -14,4 +18,8 @@ extension StringExtension on String {
 
     return output;
   }
+}
+
+double getAvailableWidth(BuildContext context) {
+  return MediaQuery.of(context).size.width - (2 * appPaddingValue);
 }

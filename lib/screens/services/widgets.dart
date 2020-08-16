@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:service_pap/widgets/neumorphism/neumorphism.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+
+import 'package:service_pap/utils/utils.dart';
+import 'package:service_pap/widgets/neumorphism/neumorphism.dart';
 
 class RatingStars extends StatelessWidget {
   final rating;
@@ -49,17 +51,67 @@ class RatingStars extends StatelessWidget {
 }
 
 class BottomBar extends StatefulWidget {
+  final Function onSearch;
+
+  const BottomBar({Key key, @required this.onSearch}) : super(key: key);
+
   @override
-  _BottomBarState createState() => _BottomBarState();
+  _BottomBarState createState() => _BottomBarState(onSearch: onSearch);
 }
 
 class _BottomBarState extends State<BottomBar> {
-  final _bottomButtonBackgroundColor = Colors.white;
+  bool _expanded = false;
+  FocusNode _searchFocusNode;
+  double _containerWidth = 110.0;
+  final _buttonsPadding = 8.0;
+  final _buttonBackgroundColor = Colors.white;
+  final _expandAnimationOffset = Duration(milliseconds: 250);
+  final _expandAnimationDuration = Duration(milliseconds: 250);
+  final Function onSearch;
+
+  _BottomBarState({@required this.onSearch});
+
+  void _shrinkContainer() {
+    setState(() {
+      _expanded = false;
+      _containerWidth = 110.0;
+
+      Future.delayed(_expandAnimationDuration + _expandAnimationOffset, () {
+        _searchFocusNode.unfocus();
+      });
+    });
+  }
+
+  void _expandContainer(context) {
+    setState(() {
+      _expanded = true;
+      _containerWidth = getAvailableWidth(context);
+
+      Future.delayed(_expandAnimationDuration + _expandAnimationOffset, () {
+        _searchFocusNode.requestFocus();
+      });
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+
+    _searchFocusNode = FocusNode();
+  }
+
+  @override
+  void dispose() {
+    _searchFocusNode.dispose();
+
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
-    NeumorphicStyle _bottomButtonsStyle = NeumorphicStyle(
-      color: _bottomButtonBackgroundColor,
+    NeumorphicStyle _buttonsStyle = NeumorphicStyle(
+      color: _buttonBackgroundColor,
+      padding: const EdgeInsets.all(6),
       radius: BorderRadius.circular(10.0),
       shadows: [
         BoxShadow(
@@ -77,10 +129,12 @@ class _BottomBarState extends State<BottomBar> {
       ],
     );
 
-    return Container(
-      padding: EdgeInsets.all(12.0),
+    return AnimatedContainer(
+      curve: Curves.easeOut,
+      duration: Duration(milliseconds: 250),
+      width: _containerWidth,
       decoration: BoxDecoration(
-          color: _bottomButtonBackgroundColor,
+          color: _buttonBackgroundColor,
           borderRadius: BorderRadius.circular(12.0),
           boxShadow: [
             BoxShadow(
@@ -92,14 +146,43 @@ class _BottomBarState extends State<BottomBar> {
           ]),
       child: Row(
         children: <Widget>[
-          NeumorphicButton(
-            child: Icon(Icons.search),
-            style: _bottomButtonsStyle,
+          Expanded(
+            child: AnimatedCrossFade(
+              duration: Duration(milliseconds: 250),
+              crossFadeState: _expanded
+                  ? CrossFadeState.showSecond
+                  : CrossFadeState.showFirst,
+              firstChild: Padding(
+                padding: const EdgeInsets.all(1.0),
+                child: Padding(
+                  padding: EdgeInsets.all(_buttonsPadding),
+                  child: NeumorphicButton(
+                    child: Icon(Icons.search),
+                    style: _buttonsStyle,
+                    onTap: () => _expandContainer(context),
+                  ),
+                ),
+              ),
+              secondChild: NeumorphicTextField(
+                hint: 'Search for service...',
+                focusNode: _searchFocusNode,
+                onChanged: onSearch,
+                style: NeumorphicStyle(
+                  padding: EdgeInsets.only(left: 8.0),
+                ),
+                button: IconButton(
+                  icon: Icon(Icons.close),
+                  onPressed: () => _shrinkContainer(),
+                ),
+              ),
+            ),
           ),
-          SizedBox(width: 15),
-          NeumorphicButton(
-            child: Icon(MdiIcons.filter),
-            style: _bottomButtonsStyle,
+          Padding(
+            padding: EdgeInsets.all(_buttonsPadding),
+            child: NeumorphicButton(
+              child: Icon(MdiIcons.filter),
+              style: _buttonsStyle,
+            ),
           ),
         ],
       ),

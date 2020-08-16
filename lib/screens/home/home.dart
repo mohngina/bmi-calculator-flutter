@@ -19,9 +19,9 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       backgroundColor: appBackgroundColor,
       appBar: CustomAppBar(title: 'Home'),
-      body: SingleChildScrollView(
-        child: GestureDetector(
-          onTap: () => FocusScope.of(context).unfocus(),
+      body: GestureDetector(
+        onTap: () => FocusScope.of(context).unfocus(),
+        child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
@@ -33,6 +33,9 @@ class _HomePageState extends State<HomePage> {
                 padding: EdgeInsets.symmetric(horizontal: appPaddingValue),
                 child: NeumorphicTextField(
                   hint: 'Search for services...',
+                  button: NeumorphicButton(
+                    child: Icon(Icons.search),
+                  ),
                 ),
               ),
               SizedBox(height: 10),
