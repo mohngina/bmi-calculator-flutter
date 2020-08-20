@@ -37,7 +37,7 @@ class _SelectedProfileState extends State<SelectedProfile> {
             SizedBox(height: 10),
             Padding(
               padding: EdgeInsets.only(left: 20.0),
-              child: Text('Mourinho', style: TextStyle(fontSize: 30, color: Colors.grey[700], fontWeight: FontWeight.bold),),
+              child: Text('Mourinho', style: TextStyle(fontSize: 20, color: Colors.grey[700], fontWeight: FontWeight.bold),),
             ),
             Container(
             padding: EdgeInsets.symmetric(
@@ -96,7 +96,7 @@ class _SelectedProfileState extends State<SelectedProfile> {
                       clientComment: 'Happy Clients',
                     ),
                     Align(
-                      alignment: Alignment(2.0, 0.8),
+                      alignment: Alignment(2.0, 0.6),
                       child: SingleChildScrollView(
                         scrollDirection: Axis.horizontal,
                         child: Row(
