@@ -25,62 +25,65 @@ class ReusableCard extends StatelessWidget {
     return Container(
       height: mediaQuery.size.width * 0.30,
       width: mediaQuery.size.width * 0.50,
-      child: Card(
-        elevation: 6,
-        color: Colors.white,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: <Widget>[
-            Row(
-              children: <Widget>[
-                Padding(
-                  padding: EdgeInsets.all(8.0),
-                  child: Container(
-                    height: 40,
-                    width: 40,
-                    child: NeumorphicContainer(
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(6),
-                        child: Image.network(
-                          image,
-                          width: 30,
-                          height: 30,
+      child: ClipRRect(
+        borderRadius: BorderRadius.all(Radius.circular(28.0)),
+        child: Card(
+          elevation: 0,
+          color: Colors.white,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: <Widget>[
+              Row(
+                children: <Widget>[
+                  Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: Container(
+                      height: 40,
+                      width: 40,
+                      child: NeumorphicContainer(
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(6),
+                          child: Image.network(
+                            image,
+                            width: 30,
+                            height: 30,
+                          ),
                         ),
                       ),
                     ),
                   ),
+                  SizedBox(
+                    width: 10,
+                  ),
+                  Text(
+                    name,
+                    style: TextStyle(
+                        fontSize: 18,
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold),
+                  ),
+                ],
+              ),
+              Padding(
+                padding: EdgeInsets.only(left: 8.0),
+                child: Text(
+                  comment,
+                  style: TextStyle(fontSize: 15, color: Colors.black),
                 ),
-                SizedBox(
-                  width: 10,
-                ),
-                Text(
-                  name,
+              ),
+              Padding(
+                padding: EdgeInsets.only(left: 65, top: 20),
+                child: Text(
+                  date,
                   style: TextStyle(
-                      fontSize: 20,
+                      fontSize: 15,
                       color: Colors.black,
                       fontWeight: FontWeight.bold),
                 ),
-              ],
-            ),
-            Padding(
-              padding: EdgeInsets.only(left: 8.0),
-              child: Text(
-                comment,
-                style: TextStyle(fontSize: 15, color: Colors.black),
               ),
-            ),
-            Padding(
-              padding: EdgeInsets.only(left: 65, top: 20),
-              child: Text(
-                date,
-                style: TextStyle(
-                    fontSize: 15,
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold),
-              ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
@@ -120,7 +123,7 @@ class ReusableCard2 extends StatelessWidget {
               child: Text(
                 payRate,
                 style: TextStyle(
-                  fontSize: 20,
+                  fontSize: 15,
                   color: Colors.black,
                   fontWeight: FontWeight.bold,
                 ),
@@ -131,7 +134,7 @@ class ReusableCard2 extends StatelessWidget {
               child: Text(
                 location,
                 style: TextStyle(
-                    fontSize: 18,
+                    fontSize: 15,
                     color: Colors.black,
                     fontWeight: FontWeight.bold),
               ),
@@ -141,7 +144,7 @@ class ReusableCard2 extends StatelessWidget {
               child: Text(
                 place,
                 style: TextStyle(
-                    fontSize: 20,
+                    fontSize: 15,
                     color: Colors.grey[700],
                     fontWeight: FontWeight.bold),
               ),
@@ -151,7 +154,7 @@ class ReusableCard2 extends StatelessWidget {
               child: Text(
                 clientMileage,
                 style: TextStyle(
-                    fontSize: 18,
+                    fontSize: 15,
                     color: Colors.black,
                     fontWeight: FontWeight.bold),
               ),
@@ -161,7 +164,7 @@ class ReusableCard2 extends StatelessWidget {
               child: Text(
                 clientNumber,
                 style: TextStyle(
-                    fontSize: 20,
+                    fontSize: 15,
                     color: Colors.grey[700],
                     fontWeight: FontWeight.bold),
               ),
@@ -171,7 +174,7 @@ class ReusableCard2 extends StatelessWidget {
               child: Text(
                 rating,
                 style: TextStyle(
-                    fontSize: 18,
+                    fontSize: 15,
                     color: Colors.black,
                     fontWeight: FontWeight.bold),
               ),
@@ -185,7 +188,7 @@ class ReusableCard2 extends StatelessWidget {
               child: Text(
                 clientComment,
                 style: TextStyle(
-                  fontSize: 18,
+                  fontSize: 15,
                   color: Colors.black,
                   fontWeight: FontWeight.bold,
                 ),
