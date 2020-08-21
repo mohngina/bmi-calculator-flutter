@@ -33,7 +33,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             children: [
               CustomAppBar(),
               SizedBox(height: size.height * 0.02),
-              CustomProfileInfo(size: size),
+              CustomProfileInfo(),
               SizedBox(height: size.height * 0.02),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: appPaddingValue),
@@ -89,7 +89,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       width: size.width * 0.8,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.all(
-                            Radius.circular(10),
+                            Radius.circular(6),
                           ),
                           boxShadow: [
                             BoxShadow(
@@ -106,7 +106,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             ),
                           ]),
                       child: ClipRRect(
-                        borderRadius: BorderRadius.all(Radius.circular(10)),
+                        borderRadius: BorderRadius.all(Radius.circular(6)),
                         child: GoogleMap(
                           onMapCreated: (GoogleMapController controller) {
                             mapController = controller;
