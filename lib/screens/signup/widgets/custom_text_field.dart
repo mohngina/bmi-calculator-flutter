@@ -5,8 +5,10 @@ class CustomTextField extends StatelessWidget {
   final bool obscure;
   final TextInputType keyBoard;
   final FocusNode mFocusNode;
+  final mValidation;
+  final mOnSaved;
 
-  CustomTextField({this.label, this.obscure, this.keyBoard, this.mFocusNode});
+  CustomTextField({this.label, this.obscure, this.keyBoard, this.mFocusNode, this.mValidation, this.mOnSaved});
 
   @override
   Widget build(BuildContext context) {
@@ -28,16 +30,10 @@ class CustomTextField extends StatelessWidget {
         ),
         // contentPadding: EdgeInsets.all(15.0),
       ),
-      // TODO: add custom validator for various input fields
-      validator: (String value) {
-        if (value.trim().isEmpty) {
-          return '$label is required';
-        }
-        return null;
-      },
+      validator: mValidation,
       onSaved: (String value) {
-        // TODO: Capture the email value
-        print("$label Value: $value");
+        // save input value
+        mOnSaved(value);
       },
     );
   }
