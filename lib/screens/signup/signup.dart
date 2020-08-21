@@ -1,9 +1,7 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:service_pap/screens/signup/widgets/custom_submit_button.dart';
 import 'package:service_pap/screens/signup/widgets/custom_text_field.dart';
-import 'package:dio/dio.dart';
 import 'package:http/http.dart' as http;
 import 'package:fluttertoast/fluttertoast.dart';
 import '../../utils/variables.dart';
