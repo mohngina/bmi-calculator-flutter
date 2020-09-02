@@ -127,6 +127,9 @@ class _ServicesPageState extends State<ServicesPage> {
 
   @override
   Widget build(BuildContext context) {
+    
+    TestService.fetchAll();
+
     return Scaffold(
       backgroundColor: appBackgroundColor,
       appBar: CustomAppBar(

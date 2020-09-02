@@ -1,3 +1,55 @@
+import 'dart:convert';
+
+import 'package:service_pap/models/user_model.dart';
+import 'package:service_pap/services/services.dart' as services;
+
+class TestServiceProvider {
+  final id;
+  final TestUser user;
+
+  TestServiceProvider({this.id, this.user});
+
+  factory TestServiceProvider.fromJson(Map<String, dynamic> json) {
+    print(json);
+
+    return TestServiceProvider(
+      id: json['id'],
+      user: TestUser.fromJson(json['user']),
+    );
+  }
+}
+
+class TestService {
+  final id;
+  final name;
+  final price;
+  final TestServiceProvider provider;
+
+  TestService({this.id, this.name, this.price, this.provider});
+
+  factory TestService.fromJson(Map<String, dynamic> json) {
+    return TestService(
+      id: json['id'],
+      name: json['name'],
+      price: json['price'],
+      provider: TestServiceProvider.fromJson(json['provider']),
+    );
+  }
+
+  static fetchAll() async {
+    var response = await services.getAll();
+    List<TestService> pulledServices = [];
+    List<dynamic> data = json.decode(response.body)['data'];
+
+    for (var service in data) {
+      pulledServices.add(TestService.fromJson(service));
+    }
+
+    print('Pulled Services: $data');
+    return pulledServices;
+  }
+}
+
 class ServiceProvider {
   final id;
   final name;
@@ -14,7 +66,9 @@ class Service {
 
   Service(this.id, this.location, this.rating, this.provider);
 
-  static fetchAll() {
+  static fetchAll() async {
+    var response = await services.getAll();
+    print(response);
     return [];
   }
 }
