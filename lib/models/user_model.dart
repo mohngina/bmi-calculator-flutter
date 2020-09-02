@@ -19,3 +19,28 @@ class User {
     );
   }
 }
+
+class TestUser {
+  final id;
+  final email;
+  final username;
+  // final UserProfile profile;
+
+  TestUser({this.id, this.username, this.email});
+
+  factory TestUser.fromJson(Map<String, dynamic> json) {
+    return TestUser(
+      id: json['id'],
+      email: json['email'],
+      username: json['username'],
+    );
+  }
+
+  // static User fetchUser() {
+  //   return User(
+  //     'trixy',
+  //     'trixy@mail.com',
+  //     UserProfile('https://randomuser.me/api/portraits/women/21.jpg'),
+  //   );
+  // }
+}
