@@ -5,6 +5,7 @@ import '../styles.dart';
 class Neumorphic extends StatefulWidget {
   final child;
   final pressed;
+  final width;
   final NeumorphicStyle style;
 
   const Neumorphic({
@@ -12,28 +13,34 @@ class Neumorphic extends StatefulWidget {
     @required this.child,
     @required this.pressed,
     @required this.style,
+    this.width,
   }) : super(key: key);
 
   @override
-  _NeumorphicState createState() =>
-      _NeumorphicState(child: child, pressed: pressed, style: style);
+  _NeumorphicState createState() => _NeumorphicState(
+      child: child, width: width, pressed: pressed, style: style);
 }
 
 class _NeumorphicState extends State<Neumorphic> {
   final child;
   final pressed;
+  final width;
   final NeumorphicStyle style;
 
   _NeumorphicState({
     @required this.child,
+    @required this.width,
     @required this.pressed,
     @required this.style,
   });
 
   @override
   Widget build(BuildContext context) {
+    // print("Width: ${width}");
     return Container(
       padding: style.padding,
+      // width: width,
+      // height: style.height,
       decoration: BoxDecoration(
         color: style.color,
         borderRadius: style.radius,

@@ -32,6 +32,7 @@ class _NeumorphicContainerState extends State<NeumorphicContainer> {
 
   @override
   Widget build(BuildContext context) {
+    // print('Width from Container: ${style.width}');
     return Neumorphic(
       child: child,
       pressed: pressed,

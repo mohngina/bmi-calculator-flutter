@@ -5,9 +5,13 @@ class NeumorphicStyle {
   final color;
   final radius;
   final padding;
+  final double width;
+  // final height;
   final List<BoxShadow> shadows;
 
   const NeumorphicStyle({
+    this.width: 20.0,
+    // this.height: 20,
     this.padding: const EdgeInsets.all(5.0),
     this.radius: const BorderRadius.all(const Radius.circular(5.0)),
     this.color: appBackgroundColor,

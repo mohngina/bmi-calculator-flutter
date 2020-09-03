@@ -54,11 +54,17 @@ class ProfileInfo extends StatelessWidget {
 
 class ServiceCategories extends StatelessWidget {
   final List<ServiceCategory> serviceCategories;
+  // final categoriesIcons = {
+  //   'plumber': MdiIcons.waterPump,
+  //   'electrician': Icons.power,
+  //   'cleaner': Icons.brush,
+  //   'cook': MdiIcons.cupcake,
+  // };
   final categoriesIcons = {
-    'plumber': MdiIcons.waterPump,
-    'electrician': Icons.power,
-    'cleaner': Icons.brush,
-    'cook': MdiIcons.cupcake,
+    'plumber': 'assets/icons/plumber.png',
+    'electrician': 'assets/icons/electrician.png',
+    'cleaner': 'assets/icons/cleaner.png',
+    'cook': 'assets/icons/laundry.png',
   };
 
   ServiceCategories({
@@ -88,13 +94,18 @@ class ServiceCategories extends StatelessWidget {
             children: [
               NeumorphicContainer(
                 style: NeumorphicStyle(
+                  width: 20.0,
                   padding: EdgeInsets.symmetric(horizontal: 30, vertical: 20),
                 ),
                 child: Column(
                   children: <Widget>[
-                    Icon(
-                        categoriesIcons[category.name.toString().toLowerCase()],
-                        size: 60.0),
+                    // Icon(
+                    //     categoriesIcons[category.name.toString().toLowerCase()],
+                    //     size: 60.0),
+                    Image.asset(
+                      categoriesIcons[category.name.toString().toLowerCase()],
+                      height: 50,
+                    ),
                     SizedBox(height: 30),
                     Text("${category.name}".capitalize()),
                     SizedBox(height: 10),
